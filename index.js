@@ -1,35 +1,44 @@
 // Carousel
 const productSlider = document.querySelector('.product-carousel')
-const productImageWidth = document.querySelector('.product-img')
+const product = document.querySelector('.product')
 const leftBtn = document.querySelector('.carousel-arrow-left')
 const rightBtn = document.querySelector('.carousel-arrow-right')
+const dots = [...document.querySelectorAll('.carousel-indicator')]
 
-const maxScrollLeft = productSlider.scrollWidth - productSlider.clientWidth
+let currentDot = Math.round(productSlider.offsetWidth / product.offsetWidth)
+dots[currentDot - 1].classList.add('active')
 
 productSlider.addEventListener('scroll', () => {
-  console.log(productSlider.scrollLeft, maxScrollLeft)
-  if (productSlider.scrollLeft > 10) {
+  const maxScrollLeft = productSlider.scrollWidth - productSlider.clientWidth
+
+  if (productSlider.scrollLeft > 0) {
     leftBtn.style.display = 'inline'
   }
-  if (productSlider.scrollLeft > maxScrollLeft - 10) {
+  if (productSlider.scrollLeft === maxScrollLeft) {
     rightBtn.style.display = 'none'
   }
 
-  if (productSlider.scrollLeft < 10) {
+  if (productSlider.scrollLeft === 0) {
     leftBtn.style.display = 'none'
   }
 
-  if (productSlider.scrollLeft < maxScrollLeft - 10) {
+  if (productSlider.scrollLeft < maxScrollLeft) {
     rightBtn.style.display = 'inline'
   }
 })
 
 rightBtn.addEventListener('click', () => {
-  productSlider.scrollLeft += productSlider.clientWidth + 5
+  productSlider.scrollLeft += product.offsetWidth
+  dots[currentDot - 1].classList.remove('active')
+  dots[currentDot].classList.add('active')
+  currentDot += 1
 })
 
 leftBtn.addEventListener('click', () => {
-  productSlider.scrollLeft -= productSlider.clientWidth + 5
+  productSlider.scrollLeft -= product.offsetWidth
+  dots[currentDot - 1].classList.remove('active')
+  dots[currentDot - 2].classList.add('active')
+  currentDot -= 1
 })
 
 // Accordion
