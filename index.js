@@ -8,13 +8,14 @@ const displayedProducts = Math.round(
   productSlider.offsetWidth / product.offsetWidth,
 )
 
-let currentDot = displayedProducts
-document.querySelector(`[data-index="${currentDot}"]`).classList.add('active')
+document
+  .querySelector(`[data-index="${displayedProducts}"]`)
+  .classList.add('active')
 
 const removeActiveDot = () =>
   document
-    .querySelectorAll('.carousel-indicator')
-    .forEach((indicator) => indicator.classList.remove('active'))
+    .querySelector('.carousel-indicator.active')
+    .classList.remove('active')
 
 const addActiveDot = (index) =>
   document.querySelector(`[data-index="${index}"]`).classList.add('active')
@@ -23,6 +24,7 @@ productSlider.addEventListener('scroll', () => {
   const maxScrollLeft = productSlider.scrollWidth - productSlider.clientWidth
   const scrollLength = productSlider.scrollLeft
 
+  // handle arrows
   if (scrollLength > 0) {
     leftBtn.style.display = 'inline'
   }
@@ -38,25 +40,19 @@ productSlider.addEventListener('scroll', () => {
     rightBtn.style.display = 'inline'
   }
 
-  const activeDot =
-    Math.round(scrollLength / product.offsetWidth) + displayedProducts
+  const currentDot =
+    displayedProducts + Math.round(scrollLength / product.offsetWidth)
 
   removeActiveDot()
-  addActiveDot(activeDot)
+  addActiveDot(currentDot)
 })
 
 rightBtn.addEventListener('click', () => {
   productSlider.scrollLeft += product.offsetWidth
-  removeActiveDot()
-  currentDot += 1
-  addActiveDot(currentDot)
 })
 
 leftBtn.addEventListener('click', () => {
   productSlider.scrollLeft -= product.offsetWidth
-  removeActiveDot()
-  currentDot -= 1
-  addActiveDot(currentDot)
 })
 
 // Accordion
