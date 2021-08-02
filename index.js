@@ -1,8 +1,8 @@
 // Carousel
 const productSlider = document.querySelector('.product-carousel')
 const product = document.querySelector('.product')
-const leftBtn = document.querySelector('.carousel-arrow-left')
-const rightBtn = document.querySelector('.carousel-arrow-right')
+const leftArrow = document.querySelector('.carousel-arrow-left')
+const rightArrow = document.querySelector('.carousel-arrow-right')
 
 const displayedProducts = Math.round(
   productSlider.offsetWidth / product.offsetWidth,
@@ -12,12 +12,12 @@ document
   .querySelector(`[data-index="${displayedProducts}"]`)
   .classList.add('active')
 
-const removeActiveDot = () =>
+const removeActiveIndicator = () =>
   document
     .querySelector('.carousel-indicator.active')
     .classList.remove('active')
 
-const addActiveDot = (index) =>
+const addActiveIndicator = (index) =>
   document.querySelector(`[data-index="${index}"]`).classList.add('active')
 
 productSlider.addEventListener('scroll', () => {
@@ -26,50 +26,31 @@ productSlider.addEventListener('scroll', () => {
 
   // handle arrows
   if (scrollLength > 0) {
-    leftBtn.style.display = 'inline'
+    leftArrow.classList.add('active')
   }
   if (scrollLength === maxScrollLeft) {
-    rightBtn.style.display = 'none'
+    rightArrow.classList.remove('active')
   }
 
   if (scrollLength === 0) {
-    leftBtn.style.display = 'none'
+    leftArrow.classList.remove('active')
   }
 
   if (scrollLength < maxScrollLeft) {
-    rightBtn.style.display = 'inline'
+    rightArrow.classList.add('active')
   }
 
-  const currentDot =
+  const currentIndicator =
     displayedProducts + Math.round(scrollLength / product.offsetWidth)
 
-  removeActiveDot()
-  addActiveDot(currentDot)
+  removeActiveIndicator()
+  addActiveIndicator(currentIndicator)
 })
 
-rightBtn.addEventListener('click', () => {
+rightArrow.addEventListener('click', () => {
   productSlider.scrollLeft += product.offsetWidth
 })
 
-leftBtn.addEventListener('click', () => {
+leftArrow.addEventListener('click', () => {
   productSlider.scrollLeft -= product.offsetWidth
-})
-
-// Accordion
-
-const details = document.querySelectorAll('details')
-
-details.forEach((detail) => {
-  detail.addEventListener('toggle', ({ target }) => {
-    const plusBtn = target.querySelector('.summary-icon-plus')
-    const minusBtn = target.querySelector('.summary-icon-minus')
-
-    if (detail.open) {
-      plusBtn.style.display = 'none'
-      minusBtn.style.display = 'inline-block'
-    } else {
-      plusBtn.style.display = 'inline-block'
-      minusBtn.style.display = 'none'
-    }
-  })
 })

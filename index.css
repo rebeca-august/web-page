@@ -99,6 +99,10 @@ main {
   overflow: auto;
 }
 
+.product-carousel::-webkit-scrollbar {
+  display: none;
+}
+
 .product {
   display: flex;
   flex-direction: column;
@@ -151,7 +155,13 @@ main {
   cursor: pointer;
 }
 
+.carousel-arrow-left.active,
+.carousel-arrow-right.active {
+  display: block;
+}
+
 .carousel-arrow-right {
+  display: none;
   position: absolute;
   right: 0;
   top: 90px;
@@ -265,6 +275,7 @@ details {
   border-top: 2px solid gray;
   padding: 20px;
   font-family: sans-serif;
+  cursor: pointer;
 }
 
 details:last-of-type {
@@ -294,6 +305,14 @@ summary {
 }
 
 .summary-icon-minus {
+  display: none;
+}
+
+details[open] .summary-icon-minus {
+  display: block;
+}
+
+details[open] .summary-icon-plus {
   display: none;
 }
 
