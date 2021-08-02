@@ -90,7 +90,7 @@ main {
 
 .product-carousel-container {
   position: relative;
-  padding: 30px;
+  padding: 0 30px;
 }
 
 .product-carousel {
@@ -149,7 +149,7 @@ main {
   display: none;
   position: absolute;
   left: 0;
-  top: 90px;
+  top: 60px;
   width: 16px;
   margin-right: 5px;
   cursor: pointer;
@@ -164,7 +164,7 @@ main {
   display: none;
   position: absolute;
   right: 0;
-  top: 90px;
+  top: 60px;
   width: 16px;
   margin-left: 5px;
   cursor: pointer;
@@ -230,7 +230,7 @@ main {
 }
 
 .info-banner-icon {
-  width: 30px;
+  font-size: 2.5em;
   align-self: center;
   margin-bottom: 15px;
 }
@@ -245,9 +245,9 @@ main {
   font-size: 1em;
 }
 
-.social-icons img {
+.social-icons i {
   margin-top: 5px;
-  width: 30px;
+  font-size: 1.5em;
   cursor: pointer;
 }
 
@@ -299,7 +299,7 @@ summary {
 
 .summary-icon-plus,
 .summary-icon-minus {
-  width: 12px;
+  font-size: 1em;
   text-align: end;
   cursor: pointer;
 }
@@ -413,11 +413,11 @@ details[open] .summary-icon-plus {
   }
 
   .carousel-arrow-right {
-    width: 20px;
+    font-size: 2em;
   }
 
   .carousel-arrow-left {
-    width: 20px;
+    font-size: 2em;
   }
 
   .carousel-nav {
@@ -459,6 +459,15 @@ details[open] .summary-icon-plus {
   .hero {
     background-position-y: 45%;
   }
+
+  .carousel-arrow-right {
+    top: 100px;
+  }
+
+  .carousel-arrow-left {
+    top: 100px;
+    font-size: 2em;
+  }
 }
 
 /* Desktop */
@@ -469,11 +478,13 @@ details[open] .summary-icon-plus {
   }
 
   .carousel-arrow-right {
-    top: 120px;
+    font-size: 1.5em;
+    top: 80px;
   }
 
   .carousel-arrow-left {
-    top: 120px;
+    font-size: 1.5em;
+    top: 80px;
   }
 
   .product {
