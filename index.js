@@ -21,14 +21,14 @@ const addActiveIndicator = (index) =>
   document.querySelector(`[data-index="${index}"]`).classList.add('active')
 
 productSlider.addEventListener('scroll', () => {
-  const maxScrollLeft = productSlider.scrollWidth - productSlider.clientWidth
+  const maxScrollLength = productSlider.scrollWidth - productSlider.clientWidth
   const scrollLength = productSlider.scrollLeft
 
   // handle arrows
   if (scrollLength > 0) {
     leftArrow.classList.add('active')
   }
-  if (scrollLength === maxScrollLeft) {
+  if (scrollLength === maxScrollLength) {
     rightArrow.classList.remove('active')
   }
 
@@ -36,7 +36,7 @@ productSlider.addEventListener('scroll', () => {
     leftArrow.classList.remove('active')
   }
 
-  if (scrollLength < maxScrollLeft) {
+  if (scrollLength < maxScrollLength) {
     rightArrow.classList.add('active')
   }
 
